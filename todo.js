@@ -84,6 +84,63 @@ const listTasks = () => {
   });
 };
 
+function listDone() {
+  const allTasks = loadTasks();
+  console.log(
+    "---------------------------------------------------------------"
+  );
+  if (allTasks.length === 0) {
+    console.log("   No tasks to show\n");
+    return;
+  }
+  allTasks.forEach((item, index) => {
+    if (item.done === "Done") {
+      console.log(`   ${index + 1} - ${item.task} : ${item.done}`);
+      console.log(
+        "---------------------------------------------------------------"
+      );
+    }
+  });
+}
+
+function listPending() {
+  const allTasks = loadTasks();
+  console.log(
+    "---------------------------------------------------------------"
+  );
+  if (allTasks.length === 0) {
+    console.log("   No tasks to show\n");
+    return;
+  }
+  allTasks.forEach((item, index) => {
+    if (item.done === "Pending") {
+      console.log(`   ${index + 1} - ${item.task} : ${item.done}`);
+      console.log(
+        "---------------------------------------------------------------"
+      );
+    }
+  });
+}
+
+function listInProgress() {
+  const allTasks = loadTasks();
+  console.log(
+    "---------------------------------------------------------------"
+  );
+  if (allTasks.length === 0) {
+    console.log("   No tasks to show\n");
+    return;
+  }
+  allTasks.forEach((item, index) => {
+    if (item.done === "In Progess") {
+      console.log(`   ${index + 1} - ${item.task} : ${item.done}`);
+      console.log(
+        "---------------------------------------------------------------"
+      );
+    }
+  });
+}
+
 function removeTask(index) {
   const allTasks = loadTasks();
   allTasks.splice(index - 1, 1);
@@ -121,6 +178,16 @@ function pendingTask(index) {
   listTasks();
 }
 
+function markInProgress(index) {
+  const allTasks = loadTasks();
+  allTasks.splice(index - 1, 1, {
+    task: allTasks[index - 1].task,
+    done: "In Progess",
+  });
+  saveTasks(allTasks);
+  listTasks();
+}
+
 if (command === "add") {
   addTask(argument);
 } else if (command === "list") {
@@ -133,6 +200,14 @@ if (command === "add") {
   doneTask(parseInt(argument));
 } else if (command === "pending") {
   pendingTask(parseInt(argument));
+} else if (command === "in-progress") {
+  markInProgress(parseInt(argument));
+} else if (command === "list-done") {
+  listDone();
+} else if (command === "list-pending") {
+  listPending();
+} else if (command === "list-in-progress") {
+  listInProgress();
 } else {
   console.log("Command not found.");
 }
