@@ -24,3 +24,6 @@ Make a clone before you make changes in the original file.
 ## Checkout the Project at the following URL:
 
 https://github.com/aakansh-anand/terminal-todo
+
+## Inspired by Roadmap.sh
+https://roadmap.sh/projects/task-tracker
