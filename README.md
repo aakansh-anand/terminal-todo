@@ -20,3 +20,6 @@ If you're a mac user, then you don't have `.bashrc` but `.zshrc` so configure ac
 ### DON'T MESS YOUR BASHRC or ZSHRC.
 
 Make a clone before you make changes in the original file.
+
+### Checkout the project now:
+https://github.com/aakansh-anand/terminal-todo
